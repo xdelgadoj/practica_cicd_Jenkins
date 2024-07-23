@@ -15,6 +15,12 @@ pipeline {
       }
     }
 
+    stage('SpotBugs Analysis') {
+      steps {
+        spotBugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: '**/target/spotbugsXml.xml', unHealthy: ''
+      }
+    }
+
     stage ('OWASP Dependency-Check Vulnerabilities') {
       steps {
         withMaven(maven : 'mvn-3.6.3') {
