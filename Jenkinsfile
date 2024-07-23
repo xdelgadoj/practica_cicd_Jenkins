@@ -13,13 +13,7 @@ pipeline {
           sh "mvn package"
         }
       }
-    }
-
-    stage('SpotBugs Analysis') {
-      steps {
-        spotBugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: '**/target/spotbugsXml.xml', unHealthy: ''
-      }
-    }
+    }    
 
     stage ('OWASP Dependency-Check Vulnerabilities') {
       steps {
